@@ -68,7 +68,8 @@ module.exports = {
       filename: "style.css"
     }),
     new HtmlWebpackPlugin({
-      template: "./public/index.html"
+      template: "./public/index.html",
+      favicon: "./public/pa-128-back.png"
     }),
     new webpack.DefinePlugin({
       "process.env": {
