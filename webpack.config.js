@@ -65,6 +65,12 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: "./public/index.html"
+    }),
+    new webpack.DefinePlugin({
+      "process.env": {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+        SERVER_DOMAIN: JSON.stringify(process.env.SERVER_DOMAIN)
+      }
     })
   ]
 };
