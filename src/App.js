@@ -1,26 +1,58 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Poet from "./Poet";
+import Poem from "./Poem";
+import images from "./Images";
+import { connect } from "react-redux";
+import { initialPoem } from "./actions";
+import "../sass/main.scss";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  componentDidMount() {
+    this.props.initialPoem().then(() => {
+      let newImage = images[Math.floor(Math.random() * images.length + 1)];
+      console.log(newImage);
+      document.documentElement.style.setProperty(
+        `--image-background-primary`,
+        `url(https://picsum.photos/id/${newImage}/840/500)`
+      );
+      document.documentElement.style.setProperty(
+        `--image-background-secondary`,
+        `url(https://picsum.photos/id/${newImage}/840/500)`
+      );
+      document.documentElement.style.setProperty(
+        `--image-poet-primary`,
+        `url(${this.props.poet.image})`
+      );
+    });
+  }
+
+  render() {
+    const side = this.props.side;
+    const { poet } = this.props;
+    const { poem } = this.props;
+
+    return (
+      <div class={`container container-a ${side === "b" ? "contianer-b" : ""}`}>
+        <div class={`side-content side-content-${side}`}>
+          {poet ? <Poet /> : ""}
+        </div>
+        <div class={`content content-${side}`}>
+          <header class="header">
+            <img src="public/pa-128.png" alt="logo" class="logo" />
+            <div class="logo-text">Poema Aleatorio</div>
+          </header>
+          {poem ? <Poem /> : ""}
+        </div>
+      </div>
+    );
+  }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return state.data;
+};
+
+export default connect(
+  mapStateToProps,
+  { initialPoem }
+)(App);
