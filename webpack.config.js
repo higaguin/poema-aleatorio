@@ -37,15 +37,19 @@ module.exports = {
         test: /\.(sa|sc|c)ss$/
       },
       {
-        test: /\.(jpe?g|png|gif|svg|ico)$/,
-        use: [
-          {
-            loader: "url-loader",
-            options: { limit: false }
-          },
-          "image-webpack-loader"
-        ]
+        test: /\.(png|svg|jpg|gif)$/,
+        use: ["file-loader"]
       }
+      // {
+      //   test: /\.(jpe?g|png|gif|svg|ico)$/,
+      //   use: [
+      //     {
+      //       loader: "url-loader",
+      //       options: { limit: false }
+      //     },
+      //     "image-webpack-loader"
+      //   ]
+      // }
     ]
   },
   optimization: {

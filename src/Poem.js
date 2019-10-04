@@ -9,19 +9,21 @@ class Poem extends React.Component {
     const poem = this.props.poem;
 
     return (
-      <main class="poem-view">
+      <main className="poem-view">
         <div
-          class={`poem-card poem-card-a ${side === "b" ? "poem-card-b" : ""}`}
+          className={`poem-card poem-card-a ${
+            side === "b" ? "poem-card-b" : ""
+          }`}
         >
-          <div class="poem-card__header">{poem.title}</div>
-          <div class="poem-card__text">
+          <div className="poem-card__header">{poem.title}</div>
+          <div className="poem-card__text">
             <>
               {poem.text.split(/\n/g).map(item => {
                 return <p>{item}</p>;
               })}
             </>
           </div>
-          <div class="poem-card__extra">
+          <div className="poem-card__extra">
             <button
               className="next-button"
               onClick={e => {

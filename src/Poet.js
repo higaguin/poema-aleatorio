@@ -10,11 +10,11 @@ class Poet extends React.Component {
     changePoetImage(poet.image);
 
     return (
-      <div class={`poet ${side === "b" ? "poet-b" : ""}`}>
-        <div class={`poet__img ${side === "b" ? "poet__img-b" : ""}`}></div>
-        <div class="poet__name">{poet.author}</div>
-        <div class="poet__country">{poet.origin}</div>
-        <p class="poet__bio">{poet.bio}</p>
+      <div className={`poet ${side === "b" ? "poet-b" : ""}`}>
+        <div className={`poet__img ${side === "b" ? "poet__img-b" : ""}`}></div>
+        <div className="poet__name">{poet.author}</div>
+        <div className="poet__country">{poet.origin}</div>
+        <p className="poet__bio">{poet.bio}</p>
       </div>
     );
   }
